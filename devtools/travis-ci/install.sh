@@ -2,12 +2,14 @@
 pushd .
 cd $HOME
 
-# Install Miniconda
-MINICONDA=Miniconda2-latest-Linux-x86_64.sh
+# Install Miniconda. To upgrade desired version, update version number here
+# as well as expected hash below
+MINICONDA=Miniconda3-py38_4.9.2-Linux-x86_64.sh
 MINICONDA_HOME=$HOME/miniconda
-MINICONDA_MD5=$(curl -s https://repo.continuum.io/miniconda/ | grep -A3 $MINICONDA | sed -n '4p' | sed -n 's/ *<td>\(.*\)<\/td> */\1/p')
-wget -q https://repo.continuum.io/miniconda/$MINICONDA
-if [[ $MINICONDA_MD5 != $(md5sum $MINICONDA | cut -d ' ' -f 1) ]]; then
+# Hash pulled from https://docs.conda.io/en/latest/miniconda_hashes.html
+EXPECTED_SHA256=1314b90489f154602fd794accfc90446111514a5a72fe1f71ab83e07de9504a7
+wget -q https://repo.anaconda.com/miniconda/$MINICONDA
+if [[ $EXPECTED_SHA256 != $(sha256sum $MINICONDA | cut -d ' ' -f 1) ]]; then
     echo "Miniconda MD5 mismatch"
     exit 1
 fi

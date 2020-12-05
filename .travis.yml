@@ -33,12 +33,19 @@ env:
     - python=2.7  CONDA_PY=27
     - python=3.5  CONDA_PY=35
     - python=3.6  CONDA_PY=36
+    - python=3.7  CONDA_PY=37
+    - python=3.8  CONDA_PY=38
 
   global:
-    - ORGNAME="omnia" # the name of the organization
+    - ORGNAME="braxtonr" # the name of the organization
     - PACKAGENAME="pdbfixer" # the name of your package
     # encrypted BINSTAR_TOKEN for push of dev package to binstar
-    - secure: "hhzbVwxc6bUUkvcU4SauCUSGUIwDHV5Mq7lNZkzhQOeOQOXBCoew3zl44qwLUUYbO+Hla/+U2UqxvXZ5vx4IJzvHcMJhXB6ZiNwc5hwZtvduWzmDJZ+ErASDsdvRCGXxDz90TkOxoL/Wy6lMr6OIMMosrjY6NJGotMiCB9IUDqY="
+    # Update as per https://docs.travis-ci.com/user/environment-variables/#encrypting-environment-variables
+    # But don't let it reformat this file as it will lose the comments!
+    # Just pull the relevant line in to replace the below line
+    # Create the token first, like so:
+    # anaconda auth -n pdbfixer --scopes "conda" -c
+    - secure: XOzDdaRP3ijRaQQofr4RUL5Px229w5NiSP/QEiD3K5wbgtTn00Zqj7+XU/o60jmjQCAs5Mi7+Ld+tbm4FecdOMI18fL+YPTD2i/uYQgb2RGmtqChYxDh5fyjy0H/aOtZ43AkQ46p+fa28oPSboKFq5Z4Aqhgutyc/HtM2t4Jtdp39lEZ0IWGDeBLtyQ/sTHA8LYyct9snbPZC/pQTHHtWh0hn+iJxJczC4m1cgTePWezUE+/qF/pJUVhUiqxOUtSADXZOq1T+sNx6BJgrk8VfSoW8H0VTOxNhMdSIFXmcux5OMl+4ntdm5M9bswWgTlO5wiYCo+SHfpK6LfRw76cJp/0XJq7xteIFY4afjotqbYJmFLXt+eGR9QV53XBlMidetdoq5vtFYKDuuXm3XuUZwmmSMKNZlxNfNNZY6DlJmDabVBaOfhUGFZMUBBsFzwGKCGqjZXxp88nklIb/1A3EzzOsgS05e7JnLPsrNLtqFsDfwavvyIpvVFEcqtZZ1g7WQdQto65B2acs3u6b6aU+SKmMoa6irBjge50UkLNbLaYXpFPQCsdQIb3lLhMdWILS3XRvX8TUawi9V7nGaLAS/5LyXLrqSqulztR9aTeztgRnEIgMoR91eoI5JERnzfMElmpoM/V5yzyzXk6s5dCXXUjCiIIJ4Y87DU3WE8LNeE=
 
 after_success:
   - echo "after_success"
